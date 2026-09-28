@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmileCare Dental Clinic | Family Dentist in Jaipur</title>
+<meta name="description" content="SmileCare Dental Clinic in Jaipur offers gentle, reliable dental care for the whole family — checkups, cleaning, fillings, root canal and teeth whitening.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ================= RESET & VARIABLES ================= */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --white: #ffffff;
+    --off-white: #f7fafc;
+    --light-blue: #e9f3fb;
+    --blue: #3f8fd6;
+    --blue-dark: #2c72ad;
+    --navy: #10263b;
+    --text-grey: #5b6b7a;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --shadow: 0 8px 24px rgba(16, 38, 59, 0.08);
+    --transition: 0.25s ease;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    line-height: 1.65;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+  button { font-family: inherit; cursor: pointer; border: none; }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { padding: 90px 0; scroll-margin-top: 80px; }
+
+  .eyebrow {
+    color: var(--blue-dark);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  h1, h2, h3 { font-weight: 600; color: var(--navy); }
+  .section-title { font-size: clamp(1.7rem, 3.5vw, 2.2rem); margin-bottom: 14px; }
+  .section-sub { color: var(--text-grey); max-width: 560px; }
+  .section-head { text-align: center; margin: 0 auto 50px; max-width: 640px; }
+
+  /* ================= FADE-UP ANIMATION (safe fallback) ================= */
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .js-enabled .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  .js-enabled .fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ================= BUTTON (ONLY ONE CTA ON THE SITE) ================= */
+  .btn-cta {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    padding: 15px 34px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    box-shadow: 0 6px 18px rgba(63, 143, 214, 0.35);
+  }
+  .btn-cta:hover { background: var(--blue-dark); transform: translateY(-2px); }
+
+  /* ================= NAVBAR ================= */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+  }
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 74px;
+  }
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--navy);
+  }
+  .navbar__logo svg { width: 26px; height: 26px; color: var(--blue); }
+
+  .navbar__links { display: flex; gap: 34px; }
+  .navbar__links a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--navy);
+    transition: color var(--transition);
+    position: relative;
+  }
+  .navbar__links a:hover { color: var(--blue); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 28px;
+    background: none;
+  }
+  .hamburger span { width: 100%; height: 2px; background: var(--navy); transition: var(--transition); }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ================= HERO ================= */
+  .hero { padding: 70px 0 90px; background: var(--off-white); }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero__title { font-size: clamp(2rem, 4.2vw, 2.9rem); margin-bottom: 20px; line-height: 1.25; }
+  .hero__text { color: var(--text-grey); margin-bottom: 30px; max-width: 480px; }
+  .hero__image-wrap {
+    background: var(--light-blue);
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4/3.2;
+    box-shadow: var(--shadow);
+  }
+  .hero__image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ================= ABOUT ================= */
+  .about__inner {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .about__image-wrap {
+    background: var(--light-blue);
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4/3.4;
+    box-shadow: var(--shadow);
+  }
+  .about__image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .about__text p { color: var(--text-grey); margin-bottom: 16px; }
+
+  .stats { display: flex; gap: 30px; margin-top: 28px; flex-wrap: wrap; }
+  .stat { text-align: left; }
+  .stat__num { font-size: 1.6rem; font-weight: 700; color: var(--blue-dark); display: block; }
+  .stat__label { font-size: 0.82rem; color: var(--text-grey); }
+
+  /* ================= SERVICES ================= */
+  .services { background: var(--off-white); }
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 26px;
+    transition: var(--transition);
+  }
+  .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: transparent; }
+  .service-card__icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--light-blue);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .service-card__icon svg { width: 24px; height: 24px; color: var(--blue-dark); }
+  .service-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .service-card p { color: var(--text-grey); font-size: 0.92rem; }
+
+  /* ================= WHY CHOOSE US ================= */
+  .why__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+  }
+  .why-card { text-align: center; padding: 10px; }
+  .why-card__icon {
+    width: 56px; height: 56px;
+    margin: 0 auto 16px;
+    border: 1.5px solid var(--blue);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .why-card__icon svg { width: 24px; height: 24px; color: var(--blue-dark); }
+  .why-card h3 { font-size: 1rem; margin-bottom: 8px; }
+  .why-card p { color: var(--text-grey); font-size: 0.88rem; }
+
+  /* ================= REVIEWS ================= */
+  .reviews { background: var(--off-white); }
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px;
+  }
+  .review-card .stars { color: #f5a623; letter-spacing: 2px; margin-bottom: 14px; font-size: 0.95rem; }
+  .review-card p { color: var(--navy); font-size: 0.94rem; margin-bottom: 18px; }
+  .review-card .name { font-weight: 600; font-size: 0.9rem; color: var(--blue-dark); }
+  .reviews__note { text-align: center; color: var(--text-grey); font-size: 0.78rem; margin-top: 30px; }
+
+  /* ================= CONTACT ================= */
+  .contact__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+  .contact__details { margin: 20px 0 26px; }
+  .contact__details li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 9px 0;
+    color: var(--text-grey);
+    font-size: 0.94rem;
+  }
+  .contact__details svg { width: 19px; height: 19px; color: var(--blue-dark); flex-shrink: 0; margin-top: 3px; }
+
+  .hours-table { width: 100%; border-collapse: collapse; margin-bottom: 22px; }
+  .hours-table td { padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .hours-table td:first-child { font-weight: 500; }
+  .hours-table td:last-child { text-align: right; color: var(--text-grey); }
+
+  .map-wrap {
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 200px;
+    border: 1px solid var(--border);
+  }
+  .map-wrap iframe { width: 100%; height: 100%; border: 0; }
+
+  .contact__form {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 34px;
+  }
+  .contact__form h3 { margin-bottom: 20px; font-size: 1.15rem; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--navy);
+    transition: var(--transition);
+  }
+  .form-group textarea { resize: vertical; }
+  .form-group input:focus,
+  .form-group textarea:focus { outline: none; border-color: var(--blue); }
+  .form-error {
+    color: #d64545;
+    font-size: 0.78rem;
+    margin-top: 5px;
+    display: none;
+  }
+  .form-group.error input,
+  .form-group.error textarea { border-color: #d64545; }
+  .form-group.error .form-error { display: block; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--blue);
+    color: var(--white);
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: var(--transition);
+  }
+  .btn-submit:hover { background: var(--blue-dark); }
+
+  .form-success {
+    display: none;
+    margin-top: 16px;
+    background: #e6f7ec;
+    color: #1e7a44;
+    border: 1px solid #bfe9cd;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.86rem;
+  }
+  .form-success.show { display: block; }
+
+  /* ================= FOOTER ================= */
+  .footer {
+    background: var(--navy);
+    color: #cfdbe6;
+    padding: 50px 0 24px;
+  }
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .footer__brand h4 { color: var(--white); font-size: 1.05rem; margin-bottom: 8px; }
+  .footer__brand p { font-size: 0.85rem; color: #a9bdd0; }
+  .footer__links h5, .footer__contact h5 { color: var(--white); font-size: 0.92rem; margin-bottom: 14px; }
+  .footer__links ul li { margin-bottom: 8px; }
+  .footer__links ul li a { font-size: 0.85rem; color: #a9bdd0; transition: var(--transition); }
+  .footer__links ul li a:hover { color: var(--white); }
+  .footer__contact p { font-size: 0.85rem; color: #a9bdd0; margin-bottom: 6px; }
+  .footer__bottom {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #8ea3b8;
+    padding-top: 20px;
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 900px) {
+    .hero__inner, .about__inner, .contact__inner { grid-template-columns: 1fr; }
+    .hero__image-wrap { order: -1; }
+    .services__grid { grid-template-columns: repeat(2, 1fr); }
+    .why__grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews__grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    .navbar__links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 74px; left: 0; right: 0;
+      background: var(--white);
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      gap: 18px;
+    }
+    .navbar__links.open { display: flex; }
+    .hamburger { display: flex; }
+    .services__grid { grid-template-columns: 1fr; }
+    .why__grid { grid-template-columns: 1fr; }
+    .footer__inner { flex-direction: column; }
+    section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href="#home" class="navbar__logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8 2 5 4.5 5 8c0 3 1 5 1.5 8 .3 1.8.7 4 2 4 1.5 0 1.2-3 1.5-5 .2-1.4.8-2 2-2s1.8.6 2 2c.3 2 0 5 1.5 5 1.3 0 1.7-2.2 2-4 .5-3 1.5-5 1.5-8 0-3.5-3-6-7-6Z"/></svg>
+      SmileCare Dental Clinic
+    </a>
+    <nav class="navbar__links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="home">
+    <div class="container hero__inner">
+      <div class="fade-up">
+        <span class="eyebrow">Trusted Family Dental Care in Jaipur</span>
+        <h1 class="hero__title">Healthy Smiles Start Here.</h1>
+        <p class="hero__text">SmileCare Dental Clinic has been caring for families in Jaipur for over a decade, offering comfortable, honest dental treatment for every age — from a toddler's first check-up to routine care for grandparents. We take time to explain every step, so there are no surprises in the chair.</p>
+        <a href="#contact" class="btn-cta">Book an Appointment</a>
+      </div>
+      <!-- Image suggestion: Friendly dentist smiling with a patient in a bright, modern clinic room -->
+      <div class="hero__image-wrap fade-up">
+        <img src="images/hero-dentist.jpg" alt="Dentist smiling with a patient at SmileCare Dental Clinic">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="container about__inner">
+      <!-- Image suggestion: Clean, well-lit clinic reception or treatment room with modern dental equipment -->
+      <div class="about__image-wrap fade-up">
+        <img src="images/clinic.jpg" alt="Reception area inside SmileCare Dental Clinic in Jaipur">
+      </div>
+      <div class="about__text fade-up">
+        <span class="eyebrow">About Us</span>
+        <h2 class="section-title">A Dental Clinic Built Around Your Family</h2>
+        <p>SmileCare Dental Clinic was started in 2014 by Dr. Ananya Kapoor with a simple goal — make dental visits something families in Jaipur don't dread. What began as a small two-chair clinic in Malviya Nagar has grown into a full-service practice, but the approach has stayed the same: unhurried appointments and treatment plans that are explained in plain language before any work begins.</p>
+        <p>Whether you're bringing in a nervous first-time patient or coming in for your yearly cleaning, our team adjusts to your pace. We use modern, well-maintained equipment and follow strict sterilisation protocols, so you can focus on your treatment and not worry about the rest.</p>
+        <div class="stats">
+          <div class="stat"><span class="stat__num">10+</span><span class="stat__label">Years Experience</span></div>
+          <div class="stat"><span class="stat__num">5,000+</span><span class="stat__label">Patients Treated</span></div>
+          <div class="stat"><span class="stat__num">6 Days</span><span class="stat__label">Open a Week</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="eyebrow">What We Offer</span>
+        <h2 class="section-title">Our Dental Services</h2>
+        <p class="section-sub" style="margin:0 auto;">Comprehensive, comfortable dental care for every member of the family.</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card fade-up">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8 2 5 4.5 5 8c0 3 1 5 1.5 8 .3 1.8.7 4 2 4 1.5 0 1.2-3 1.5-5 .2-1.4.8-2 2-2s1.8.6 2 2c.3 2 0 5 1.5 5 1.3 0 1.7-2.2 2-4 .5-3 1.5-5 1.5-8 0-3.5-3-6-7-6Z"/></svg></div>
+          <h3>General Dentistry</h3>
+          <p>Routine dental care, oral exams and preventive checkups to catch problems early.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l3 3M19 3l-3 3M12 8v13M8 21h8"/><circle cx="12" cy="5" r="2"/></svg></div>
+          <h3>Teeth Cleaning</h3>
+          <p>Professional scaling and polishing to keep teeth and gums healthy between visits.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/></svg></div>
+          <h3>Dental Fillings</h3>
+          <p>Comfortable, tooth-coloured fillings for cavities and minor tooth damage.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v10M8 9l4 4 4-4M6 21h12"/></svg></div>
+          <h3>Root Canal Treatment</h3>
+          <p>Careful, precise treatment to protect and preserve a damaged or infected tooth.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+          <h3>Teeth Whitening</h3>
+          <p>Safe, professional whitening treatment for a noticeably brighter smile.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="3"/><path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6M17 8l2 2 3-4"/></svg></div>
+          <h3>Pediatric Dentistry</h3>
+          <p>Gentle, patient care designed especially for children's first dental visits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY CHOOSE US ================= -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="eyebrow">Why Patients Choose Us</span>
+        <h2 class="section-title">Care You Can Rely On</h2>
+      </div>
+      <div class="why__grid">
+        <div class="why-card fade-up">
+          <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9 8 10 4.6-1 8-5 8-10V6l-8-4Z"/></svg></div>
+          <h3>Experienced Care</h3>
+          <p>Over a decade of hands-on experience treating patients of every age group.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c4-2.5 7-5.5 7-9a7 7 0 1 0-14 0c0 3.5 3 6.5 7 9Z"/></svg></div>
+          <h3>Comfortable Environment</h3>
+          <p>A calm, clean clinic designed to ease anxiety, especially for first-time patients.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+          <h3>Modern Equipment</h3>
+          <p>Digital X-rays and properly sterilised instruments for safer, more accurate treatment.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+          <h3>Family-Friendly Approach</h3>
+          <p>From toddlers to grandparents, every visit is tailored to the patient's comfort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="eyebrow">Patient Feedback</span>
+        <h2 class="section-title">What Our Patients Say</h2>
+      </div>
+      <div class="reviews__grid">
+        <div class="review-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p>"I used to dread dental visits, but the team here is patient and explains everything before they start. My cleaning was quick and honestly didn't hurt at all."</p>
+          <div class="name">Priya M.</div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p>"Took my son here for his first check-up and the dentist was so good with him — no tears, no fuss. We're definitely coming back for his regular visits."</p>
+          <div class="name">Sanjay R.</div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="stars">★★★★☆</div>
+          <p>"Got a filling done last month. Clean clinic, didn't have to wait long, and they explained the cost clearly before starting the treatment."</p>
+          <div class="name">Meenal T.</div>
+        </div>
+      </div>
+      <p class="reviews__note">Patient names and reviews shown above are fictional and created for demonstration purposes only.</p>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="eyebrow">Get In Touch</span>
+        <h2 class="section-title">Visit or Contact SmileCare</h2>
+      </div>
+      <div class="contact__inner">
+        <div class="fade-up">
+          <h3 style="margin-bottom:8px;">SmileCare Dental Clinic</h3>
+          <ul class="contact__details">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>14, Shyam Nagar, Near Vaishali Circle, Jaipur, Rajasthan 302021</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>+91 141 400 2255</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>care@smilecaredental.in</li>
+          </ul>
+          <table class="hours-table">
+            <tr><td>Monday – Saturday</td><td>10:00 AM – 7:00 PM</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </table>
+          <!-- Google Maps placeholder: replace the src below with a real embed URL for the clinic's exact location -->
+          <div class="map-wrap">
+            <iframe src="https://maps.google.com/maps?q=Jaipur,Rajasthan&z=13&output=embed" loading="lazy" title="SmileCare Dental Clinic location map (demo placeholder)" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p style="color:var(--text-grey);font-size:0.78rem;margin-top:10px;">Address, phone, email and map shown above are fictional demo details for this project.</p>
+        </div>
+
+        <form class="contact__form fade-up" id="appointmentForm" novalidate>
+          <h3>Request an Appointment</h3>
+
+          <div class="form-group" id="nameGroup">
+            <label for="patientName">Name</label>
+            <input type="text" id="patientName" name="patientName">
+            <span class="form-error">Please enter your name.</span>
+          </div>
+
+          <div class="form-group" id="phoneGroup">
+            <label for="patientPhone">Phone Number</label>
+            <input type="tel" id="patientPhone" name="patientPhone">
+            <span class="form-error">Please enter a valid 10-digit phone number.</span>
+          </div>
+
+          <div class="form-group" id="dateGroup">
+            <label for="patientDate">Preferred Date</label>
+            <input type="date" id="patientDate" name="patientDate">
+            <span class="form-error">Please choose a preferred date.</span>
+          </div>
+
+          <div class="form-group" id="messageGroup">
+            <label for="patientMessage">Message</label>
+            <textarea id="patientMessage" name="patientMessage" rows="4" placeholder="Tell us briefly what you'd like to visit for"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Send Request</button>
+          <div class="form-success" id="formSuccess">Thank you — your request has been noted. We'll call you shortly to confirm your slot.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <h4>SmileCare Dental Clinic</h4>
+      <p>Jaipur, Rajasthan</p>
+    </div>
+    <div class="footer__links">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer__contact">
+      <h5>Contact</h5>
+      <p>14, Shyam Nagar, Jaipur</p>
+      <p>+91 141 400 2255</p>
+      <p>care@smilecaredental.in</p>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© 2026 SmileCare Dental Clinic. Demo website.</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Mark JS as active — fade-up elements only hide themselves once this runs,
+  // so content is never permanently invisible if JS fails to load.
+  document.documentElement.classList.add('js-enabled');
+
+  /* ===== Mobile hamburger menu ===== */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('active');
+    });
+  });
+
+  /* ===== Fade-up on scroll ===== */
+  const faders = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  faders.forEach(el => observer.observe(el));
+
+  /* ===== Appointment form validation ===== */
+  const form = document.getElementById('appointmentForm');
+  const successMsg = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let isValid = true;
+
+    const nameInput = document.getElementById('patientName');
+    const nameGroup = document.getElementById('nameGroup');
+    if (nameInput.value.trim() === '') {
+      nameGroup.classList.add('error');
+      isValid = false;
+    } else {
+      nameGroup.classList.remove('error');
+    }
+
+    const phoneInput = document.getElementById('patientPhone');
+    const phoneGroup = document.getElementById('phoneGroup');
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(phoneInput.value.trim())) {
+      phoneGroup.classList.add('error');
+      isValid = false;
+    } else {
+      phoneGroup.classList.remove('error');
+    }
+
+    const dateInput = document.getElementById('patientDate');
+    const dateGroup = document.getElementById('dateGroup');
+    if (dateInput.value === '') {
+      dateGroup.classList.add('error');
+      isValid = false;
+    } else {
+      dateGroup.classList.remove('error');
+    }
+
+    if (isValid) {
+      successMsg.classList.add('show');
+      form.reset();
+      setTimeout(() => successMsg.classList.remove('show'), 5000);
+    } else {
+      successMsg.classList.remove('show');
+    }
+  });
+
+});
+</script>
+</body>
+</html>
